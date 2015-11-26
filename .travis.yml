@@ -9,5 +9,5 @@ install:
   - pip install ansible
 script:
   - echo localhost > inventory
-  - ansible-playbook -i inventory --syntax-check playbook.yml
-  - ansible-playbook -i inventory --connection=local --sudo -vvvv playbook.yml
+  - ansible-playbook -i inventory --syntax-check travis-ci-playbook.yml
+  - ansible-playbook -i inventory --connection=local --sudo -vvvv travis-ci-playbook.yml

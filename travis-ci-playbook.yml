@@ -1,9 +1,8 @@
 - hosts: all
   sudo: True
+  user: travis
   vars:
     server_name: www.spider
-    work_dir: /home/vagrant/works
-    git_repos: git@github.com:JFK/spider.git
     timezone: Asia/Tokyo
     lang: ja_JP.UTF-8
   roles:
@@ -14,4 +13,3 @@
       nginx_sites: none
     - redis
     - mongod
-    - www
