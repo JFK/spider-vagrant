@@ -1,14 +1,18 @@
 [program:spider-worker]
 user=vagrant
-command={{ work_dir }}/venv/bin/rqworker -c rq
+command=rqworker -c rq_settings
 process_name=%(program_name)s-%(process_num)02d
-directory={{ work_dir }}/www/conf
+directory={{ work_dir }}/www
 environment=PATH="{{ work_dir }}/venv/bin"
 numprocs=1
 numprocs_start=1
 stopsignal=TERM
 redirect_stderr=true
 stdout_logfile={{ work_dir }}/www/log/spider-worker-%(process_num)02d.log
+stdout_logfile_maxbytes=5MB
+stdout_logfile_backups=10
 stderr_logfile={{ work_dir }}/www/log/spider-worker-%(process_num)02d.log
+stderr_logfile_maxbytes=5MB
+stderr_logfile_backups=10
 autostart=true
 autorestart=true
