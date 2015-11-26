@@ -8,6 +8,7 @@
   with_items:
     - build-essential
     - vim
+    - vim-python-jedi
     - git-core
     - supervisor
     - libxslt1-dev
