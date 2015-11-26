@@ -1,0 +1,18 @@
+- hosts: all
+  sudo: True
+  vars:
+    server_name: www.spider
+    home_dir: /home/vagrant
+    work_dir: /home/vagrant/works
+    git_repos: git@github.com:JFK/www-spider.git
+    timezone: Asia/Tokyo
+    lang: ja_JP.UTF-8
+  roles:
+    - common
+    - python
+    - ntp
+    - role: nginx
+      nginx_sites: none
+    - redis
+    - mongod
+    - www

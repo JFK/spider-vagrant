@@ -1,0 +1,18 @@
+---
+- command: apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
+
+- name: Add mongodb.org repo
+  apt_repository:
+    repo: "deb http://repo.mongodb.org/apt/debian wheezy/mongodb-org/3.0 main"
+    state: present
+
+- name: Copy mongodb.conf global configuration
+  copy: src=mongod.conf dest=/etc/mongod.conf
+
+- name: Install mongodb
+  apt: pkg=mongodb-org state=present
+
+- name: ensure mongodb is running
+  service:
+    name: mongod
+    state: started

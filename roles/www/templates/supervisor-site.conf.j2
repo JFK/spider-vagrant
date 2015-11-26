@@ -1,0 +1,14 @@
+[program:www-worker]
+user=vagrant
+process_name=%(program_name)s-%(process_num)02d
+directory={{ work_dir }}/venv
+environment=PATH="{{ work_dir }}/venv/bin"
+command={{ work_dir }}/www/server.py --app=main
+numprocs=1
+numprocs_start=1
+autostart=true
+autorestart=true
+redirect_stderr=true
+stdout_logfile={{ work_dir }}/www/log/www-worker-%(process_num)02d.log
+stderr_logfile={{ work_dir }}/www/log/www-worker-%(process_num)02d.log
+stopsignal=TERM

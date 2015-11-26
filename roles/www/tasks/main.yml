@@ -1,0 +1,28 @@
+---
+- name: Download site repos
+  git: repo={{ git_repos }} dest={{ work_dir }} accept_hostkey=yes
+  sudo: no
+
+- name: Create venv
+  action: shell virtualenv venv executable=/bin/bash chdir={{ work_dir }}
+  sudo: no
+
+- name: Install pip requirements
+  action: shell source venv/bin/activate && pip install pip -U && pip install -r requirements.txt executable=/bin/bash chdir={{ work_dir }}
+  sudo: no
+
+- name: Create log directory
+  action: shell mkdir www/log executable=/bin/bash chdir={{ work_dir }}
+  sudo: no
+
+- name: Copy supervisor global configuration
+  template: src=nginx-www.conf.j2 dest=/etc/nginx/sites-enabled/www.conf
+
+- name: Copy supervisor global configuration
+  template: src=supervisor-rq.conf.j2 dest=/etc/supervisor/conf.d/rq.conf
+
+- name: Copy supervisor global configuration
+  template: src=supervisor-site.conf.j2 dest=/etc/supervisor/conf.d/site.conf
+  notify:
+    - restart nginx
+    - reload supervisor

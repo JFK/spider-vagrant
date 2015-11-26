@@ -1,0 +1,6 @@
+---
+- name: install redis-server
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - redis-server
+  when: ansible_os_family == "Debian"
