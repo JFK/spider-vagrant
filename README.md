@@ -1,6 +1,9 @@
+[![Build status](https://travis-ci.org/JFK/spider-vagrant.svg?branch=master)](https://travis-ci.org/JFK/spider-vagrant)
+
 # Spider Vagrant
 
-[![Build status](https://travis-ci.org/JFK/spider-vagrant.svg?branch=master)](https://travis-ci.org/JFK/spider-vagrant)
+Spider is web crawler framework. This project is to use vagrant in order to enable Spider to run.
+Visit https://github.com/JFK/spider
 
 ## Preparation
 
