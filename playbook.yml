@@ -4,7 +4,7 @@
     server_name: www.spider
     home_dir: /home/vagrant
     work_dir: /home/vagrant/works
-    git_repos: git@github.com:JFK/www-spider.git
+    git_repos: git@github.com:JFK/spider.git
     timezone: Asia/Tokyo
     lang: ja_JP.UTF-8
   roles:
