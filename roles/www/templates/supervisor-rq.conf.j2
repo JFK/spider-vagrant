@@ -1,6 +1,6 @@
 [program:spider-worker]
 user=vagrant
-command=rqworker -c rq_settings
+command={{ work_dir }}/venv/bin/rqworker -c rq_settings
 process_name=%(program_name)s-%(process_num)02d
 directory={{ work_dir }}/www
 environment=PATH="{{ work_dir }}/venv/bin"
