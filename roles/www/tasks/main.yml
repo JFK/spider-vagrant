@@ -15,11 +15,14 @@
   action: shell mkdir www/log executable=/bin/bash chdir={{ work_dir }}
   sudo: no
 
-- name: Copy supervisor global configuration
+- name: Copy supervisor nginx configuration
   template: src=nginx-www.conf.j2 dest=/etc/nginx/sites-enabled/www.conf
 
-- name: Copy supervisor global configuration
+- name: Copy supervisor rq configuration
   template: src=supervisor-rq.conf.j2 dest=/etc/supervisor/conf.d/rq.conf
+
+- name: Copy supervisor rq-dashboard configuration
+  template: src=supervisor-rq-dashboard.conf.j2 dest=/etc/supervisor/conf.d/rq-dashboard.conf
 
 - name: Copy supervisor global configuration
   template: src=supervisor-site.conf.j2 dest=/etc/supervisor/conf.d/site.conf
